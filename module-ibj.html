@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Module IBJ</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style-2.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="assets/img/logo_itb.png" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html"><center>Instrumentasi Berbasis Jaringan</center></a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="wa.me/628562780935" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+          <a href="https://www.instagram.com/azykuuuuuuy/" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yogiarrazy@gmail.com" class="gmail"><i class="bx bxl-gmail"></i></a>
+          <a href="https://github.com/yogiazy" class="github"><i class="bx bxl-github"></i></a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#receiver" class="nav-link scrollto"><i class="bx bx-left-arrow"></i> <span>Receiver</span></a></li>
+          <li><a href="#sender" class="nav-link scrollto"><i class="bx bx-right-arrow"></i> <span>Sender</span></a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>Hey, FI-3271</h1>
+      <p>~ Module <span class="typed" data-typed-items="Arduino, InfluxDB, Node-red"></span></p>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="receiver" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Kode Arduino - Receiver</h2>
+          <p>Digunakan untuk menerima data sensor dari sender untuk diproses oleh relay.</p>
+          <div class="code-container">
+            <div class="code-header">
+              <div class="code-lang">Arduino</div>
+              <button class="code-copy" onclick="copyCode(this)">Salin</button>
+            </div>
+            <div class="code-body">
+              <pre>
+<code class="language-arduino">
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;PubSubClient.h&gt;
+
+const char* ssid = "labelka";
+const char* password = "labelka123";
+const char* mqtt_server = "test.mosquitto.org";
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+#define MSG_BUFFER_SIZE  (50)
+#define RELAY D1
+
+unsigned long lastMsg = 0;
+char msg[MSG_BUFFER_SIZE];
+int value = 0;
+
+void setup_wifi() {
+
+  delay(10);
+  // We start by connecting to a WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  randomSeed(micros());
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+
+  if ((char)payload[0] >= '3' && (char)payload[0] <= '7') {
+    digitalWrite(RELAY, HIGH);  
+    client.publish("sender", "Relay Closed");
+  } else {
+    digitalWrite(RELAY, LOW);  
+    client.publish("sender", "Relay Open");
+  }
+}
+
+void reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    // Create a random client ID
+    String clientId = "ESP8266Client-";
+    clientId += String(random(0xffff), HEX);
+    // Attempt to connect
+    if (client.connect(clientId.c_str())) {
+      Serial.println("connected");
+      // Once connected, publish an announcement...
+      client.publish("sender", "Dah tersambung nih...");
+      // ... and resubscribe
+      client.subscribe("receiver");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
+void setup() {
+  pinMode(BUILTIN_LED, OUTPUT);
+  pinMode(RELAY, OUTPUT);
+  Serial.begin(115200);
+  setup_wifi();
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+}
+
+void loop() {
+
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  unsigned long now = millis();
+  if (now - lastMsg > 5000) {
+    lastMsg = now;
+  }
+}
+</code>
+              </pre>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+
+    <section id="sender" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Kode Arduino - Sender</h2>
+          <p>Digunakan untuk mengirim data sensor ke receiver.</p>
+          <div class="code-container">
+            <div class="code-header">
+              <div class="code-lang">Arduino</div>
+              <button class="code-copy" onclick="copyCode(this)">Salin</button>
+            </div>
+            <div class="code-body">
+              <pre>
+<code class="language-arduino">
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;PubSubClient.h&gt;
+
+const char* ssid = "labelka";
+const char* password = "labelka123";
+const char* mqtt_server = "test.mosquitto.org";
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+#define MSG_BUFFER_SIZE  (50)
+#define POT A0
+
+unsigned long lastMsg = 0;
+char msg[MSG_BUFFER_SIZE];
+int value = 0;
+
+void setup_wifi() {
+
+  delay(10);
+  // We start by connecting to a WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  randomSeed(micros());
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+
+  if ((char)payload[0] == '1') {
+    digitalWrite(BUILTIN_LED, LOW);
+
+  } else {
+    digitalWrite(BUILTIN_LED, HIGH);
+  }
+}
+
+void reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    // Create a random client ID
+    String clientId = "ESP8266Client-";
+    clientId += String(random(0xffff), HEX);
+    // Attempt to connect
+    if (client.connect(clientId.c_str())) {
+      Serial.println("connected");
+      // Once connected, publish an announcement...
+      client.publish("receiver", "Dah tersambung nih...");
+      // ... and resubscribe
+      client.subscribe("sender");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
+void setup() {
+  pinMode(BUILTIN_LED, OUTPUT);
+  pinMode(POT, INPUT);
+  Serial.begin(115200);
+  setup_wifi();
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+}
+
+void loop() {
+
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+  unsigned long now = millis();
+  if (now - lastMsg > 500) {
+    lastMsg = now;
+    int potValue = analogRead(POT)/102.4;
+    String strPot = String(potValue);
+    Serial.println("Potensio Value: ");
+    Serial.println(strPot.c_str());
+    client.publish("receiver", strPot.c_str());
+  }
+}
+</code>
+              </pre>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>yogiazy</span></strong>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <link rel="stylesheet" href="assets/js/prism.css" />
+  <script src="assets/js/prism.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script>
+    function copyCode(button) {
+      const code = button.parentNode.nextSibling.querySelector('code');
+      const textArea = document.createElement('textarea');
+      textArea.value = code.textContent;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      button.innerHTML = 'Tersalin!';
+      setTimeout(() => {
+        button.innerHTML = 'Salin';
+      }, 2000);
+    }
+
+    const codeContainers = document.querySelectorAll('.code-container');
+    codeContainers.forEach((container) => {
+      const lang = container.querySelector('.code-lang').textContent.trim();
+      container.querySelector('code').classList.add(`language-${lang.toLowerCase()}`);
+    });
+
+    Prism.highlightAll();
+  </script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
