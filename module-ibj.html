@@ -26,6 +26,52 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style-2.css" rel="stylesheet">
+  
+  <style type="text/css">
+    .music-player {
+      position: fixed;
+      bottom: 15px;
+      right: 17px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #657B71;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .play-button {
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .play-button i {
+      font-size: 20px;
+      color: #657B71;
+    }
+
+    .music-player.playing .play-button {
+      width: 25px;
+      height: 25px;
+      transform: rotate(360deg);
+    }
+
+    .music-player.playing .play-button i {
+      color: #96FF00;
+    }
+
+    .music-player.playing {
+      background-color: #96FF00;
+    }
+  </style>
 
   <script>
     function copyToClipboard(elem) {
@@ -77,6 +123,16 @@
           <a href="https://www.instagram.com/physicsitb" class="instagram"><i class="bx bxl-instagram"></i></a>
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maman@fi.itb.ac.id" class="gmail"><i class="bx bxl-gmail"></i></a>
           <a href="https://github.com/yogiazy" class="github"><i class="bx bxl-github"></i></a>
+       
+          <div class="music-player">
+            <div class="play-button">
+              <i class="bx bx-caret-right"></i>
+            </div>
+            <audio id="my-audio">
+              <source src="https://cdn.pixabay.com/download/audio/2022/08/17/audio_eb3864cceb.mp3?filename=the-weekend-117427.mp3" type="audio/mpeg">
+              </audio>
+            </div>
+          
         </div>
       </div>
 
@@ -1178,6 +1234,40 @@ return msg;
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script type="text/javascript">
+    const musicPlayer = document.querySelector('.music-player');
+    const playButton = document.querySelector('.play-button');
+    const audio = document.querySelector('#my-audio');
+
+    let isPlaying = false;
+
+    playButton.addEventListener('click', () => {
+      if (isPlaying) {
+        pauseAudio();
+      } else {
+        playAudio();
+      }
+    });
+
+    function playAudio() {
+      isPlaying = true;
+      musicPlayer.classList.add('playing');
+      playButton.innerHTML = '<i class="bx bx-headphone"></i>';
+      audio.play();
+    }
+
+    function pauseAudio() {
+      isPlaying = false;
+      musicPlayer.classList.remove('playing');
+      playButton.innerHTML = '<i class="bx bx-caret-right"></i>';
+      audio.pause();
+    }
+
+    audio.addEventListener('ended', () => {
+      pauseAudio();
+    });
+  </script>
+        
 </body>
 
 </html>
