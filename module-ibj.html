@@ -242,11 +242,11 @@ void loop(){
                 <li><p> Download & install Raspberry Pi Imager: <a href="https://www.raspberrypi.com/software/">https://www.raspberrypi.com/software/</a></p></li>
                 <li><p> Buka aplikasi Raspberry Pi Imager & masukkan SD Card (Pakai SD Card Reader) ke laptop.</p></li>
                 <li><p> Pilih versi Raspberry Pi OS yang ingin kamu install dan pastikan SD Card telah terdeteksi. Saran, untuk keperluan kuliah FI-3271 gunakan Raspberry Pi OS 64 bit No Dekstop Environment agar beban RAM Raspberry menjadi lebih ringan.</p></li>
-                <img src="assets/img/raspi/1.jpg" class="note-padding" style="width: 60%; height: auto; border-radius: 10px; padding-bottom: 1em;" alt="">
+                <img src="assets/img/raspi/1.jpg" class="note-padding" style="width: 60%; height: auto; padding-bottom: 1em;" alt="">
                 <li><p> Atur konfigurasi dengan klik tombol pengaturan.</p></li>
-                <img src="assets/img/raspi/2.png" class="note-padding" style="width: 60%; height: auto; border-radius: 10px; padding-bottom: 1em;" alt="">
+                <img src="assets/img/raspi/2.png" class="note-padding" style="width: 60%; height: auto; padding-bottom: 1em;" alt="">
                 <li><p> Sesuaikan konfigurasi seperti pada gambar di bawah, atur username & password dan atur juga SSID hotspot yang akan digunakan. jangan lupa klik <b>Save</b>.</p></li>
-                <img src="assets/img/raspi/3.jpg" class="note-padding" style="width: 60%; height: auto%; border-radius: 10px; padding-bottom: 1em;" alt="">
+                <img src="assets/img/raspi/3.jpg" class="note-padding" style="width: 60%; height: auto%; padding-bottom: 1em;" alt="">
                 <li><p> Mulai proses instalasi dengan mengklik tombol "Write" dan tunggu hingga selesai.</p></li>
                 <li><p> Setelah selesai, keluarkan SD Card dan masukkan ke Raspberry Pi. Yeay! Raspberry siap digunakan.</p></li>
               </ul>
@@ -280,9 +280,9 @@ ssh pi@192.168.8.18
                 <p></p>
 
                 <li><p> Ada banyak cara untuk mengetahui IP dari suatu Raspberry. Salah satunya dengan menggunakan aplikasi Advanced IP Scanner. Silahkan download aplikasinya dengan link ini <a href="https://download.radmin.com/download/files/Radmin_3.5.2.1_EN.zip">https://download.radmin.com/download/files/Radmin_3.5.2.1_EN.zip</a>. lalu install, dan buka aplikasinya.</p></li>
-                <img src="assets/img/raspi/4.jpg" class="note-padding" style="width: 60%; height: auto; border-radius: 10px; padding-bottom: 1em;" alt="">
+                <img src="assets/img/raspi/4.jpg" class="note-padding" style="width: 60%; height: auto; padding-bottom: 1em;" alt="">
                 <li><p> Gambar diatas adalah tampilan awal aplikasi Advanced IP Scanner, ganti IP yang ditunjukan pada gambar dengan IP laptop kamu. Cara untuk mengetahui IP laptop, yaitu dengan ketikkan "ipconfig" di CMD.</p></li>
-                <img src="assets/img/raspi/5.jpg" class="note-padding" style="width: 60%; height: auto; border-radius: 10px; padding-bottom: 1em;" alt="">
+                <img src="assets/img/raspi/5.jpg" class="note-padding" style="width: 60%; height: auto; padding-bottom: 1em;" alt="">
                 <li><p> Copy dan pastekan IP tersebut ke Advanced IP Scanner. Ganti range IP-nya menjadi 1-255, misal IP laptop kamu "192.168.8.18" maka yang kamu ubah menjadi "192.168.8.1-255". Sehingga range IP yang terbaca di Advanced IP Scanner mulai dari 192.168.8.1 sampai 192.168.8.255</p></li>
                 <li><p> Setelah itu, copy IP Raspberry yang terscan di IP Scanner tadi dan ketikkan "<b>ssh &lt;username&gt;@&lt;hostname/ip&gt;</b>" di CMD. Lalu kamu akan diminta key Authentication, ketik saja "y" dan tekan enter. Kemudian masukkan password Raspberry kamu, dan selamat kamu berhasil akses Raspberry via SSH.</p></li>
                 <li><p> Ketika pertama kali akses Raspberry, perlu dilakukan update dan upgrade pada Raspberry. Ketikkan perintah berikut untuk update dan upgrade Raspberry.</p></li>
@@ -317,7 +317,7 @@ sudo apt-get upgrade
         <div class="section-title" data-aos="fade-right">
           <h2>InfluxDB</h2>
           <p>Secara umum, InfluxDB merupakan sebuah database open source yang dikhususkan untuk menangani data time series, yang mana data tersebut diurutkan berdasarkan urutan waktu tertentu. Sehingga dengan InfluxDB kita dapat menyimpan data-data sensor dari Mikrokontroller (ESP-8266, ESP-32, dll) melalui server.</p>
-          <img src="https://www.influxdata.com/wp-content/uploads/animated.gif" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+          <img src="https://www.influxdata.com/wp-content/uploads/animated.gif" style="width: auto; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
         </div>
 
         <div class="row">
@@ -419,7 +419,7 @@ sudo systemctl start influxdb
             <div>
               <ul>
                 <li><p> Langkah awal untuk masuk ke CommandLine (CLI) InfluxDB adalah dengan ketik "influx" di terminal Raspberry Pi. Maka akan muncul teks berikut yang menunjukkan bahwa kamu sudah masuk ke akses CLI InfluxDB.</p></li>
-                <img src="assets/img/raspi/6.jpg" class="note-padding" style="width: 60%; height: auto; padding-bottom: 1em;" alt="">
+                <img src="assets/img/raspi/6.jpg" class="note-padding" style="width: 80%; height: auto; padding-bottom: 1em;" alt="">
                 <li><p> Lalu, buat user untuk InfluxDB dengan perintah berikut.</p></li>
 
                 <div class="code-padding-2">
@@ -520,7 +520,7 @@ SELECT * FROM &lt;namatabel&gt;
         <div class="section-title" data-aos="fade-right">
           <h2>Node-RED</h2>
           <p>Node-RED adalah sebuah platform visual programming yang digunakan untuk menghubungkan dan mengotomatisasi berbagai macam perangkat dan layanan internet, seperti sensor, database, API, dan perangkat IoT (Internet of Things) lainnya. Node-RED memiliki tampilan antarmuka berbasis web yang memungkinkan kamu untuk membuat alur kerja (flow) secara visual menggunakan blok-blok grafis yang disebut "node".</p>
-          <img src="https://user-images.githubusercontent.com/44235289/86542006-aad63f80-bf09-11ea-865b-c21a9fa3b9c4.gif" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+          <img src="https://user-images.githubusercontent.com/44235289/86542006-aad63f80-bf09-11ea-865b-c21a9fa3b9c4.gif" style="width: auto; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
         </div>
 
         <div class="row">
@@ -617,9 +617,9 @@ http://&lt;hostname/ip&gt;:1880
                 <p></p>    
 
                 <li><p> Untuk kuliah FI-3271 ada beberapa Palette (library) yang digunakan, berikut adalah cara installnya. Pilih <b>Menu &rarr; Manage palette</b>. Kemudian cari palette yang mau diinstall.</p></li>
-                <img src="assets/img/raspi/7.png" class="note-padding" style="width: 60%; height: auto; border-radius: 10px; padding-bottom: 1em;" alt="">
+                <img src="assets/img/raspi/7.png" class="note-padding" style="width: 60%; height: auto; padding-bottom: 1em;" alt="">
                 <li><p> Kemudian cari palette yang mau diinstall.</p></li>
-                <img src="assets/img/raspi/8.jpg" class="note-padding" style="width: 60%; height: auto; border-radius: 10px; padding-bottom: 1em;" alt="">
+                <img src="assets/img/raspi/8.jpg" class="note-padding" style="width: 60%; height: auto; padding-bottom: 1em;" alt="">
                 <li><p> List palette (library) yang sering digunakan.</p></li>
 
                 <div class="code-padding-2">
@@ -687,26 +687,26 @@ A0-ESP8266 terhubung dengan OUTPUT-Potensiometer
                     <button class="code-copy" onclick="copyToClipboard(this)"> <i class="bx bx-copy code-copy"></i>Salin</button>
                     <pre>
                       <code class="language-arduino">
-#include &lt;ESP8266WiFi.h&gt;
-#include &lt;PubSubClient.h&gt;
-#include "MovingAverage.h"
+#include &lt;ESP8266WiFi.h&gt;                        
+#include &lt;PubSubClient.h&gt;                         
+#include "MovingAverage.h"                              
 
-const char* ssid = "labelka";
-const char* password = "labelka123";
-const char* mqtt_server = "test.mosquitto.org";
+const char* ssid = "labelka";                         
+const char* password = "labelka123";                  
+const char* mqtt_server = "test.mosquitto.org";         //set broker mqtt pada mosquitto
 
-WiFiClient espClient;
-PubSubClient client(espClient);
-MovingAverage &lt;uint16_t, 5&gt; filter;
+WiFiClient espClient;                                   
+PubSubClient client(espClient);                         
+MovingAverage &lt;uint16_t, 5&gt; filter;                     //membuat objek moving average dengan 5 data
 
 #define MSG_BUFFER_SIZE  (50)
-#define POT A0
+#define POT A0                                          //mendefinisikan pin A0 sebagai pin Potensiometer
 
 unsigned long lastMsg = 0;
 char msg[MSG_BUFFER_SIZE];
 int value = 0;
 
-void setup_wifi() {
+void setup_wifi() {                                     //melakukan koneksi ke wifi
 
   delay(10);
   Serial.println();
@@ -719,6 +719,7 @@ void setup_wifi() {
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
+
   }
 
   randomSeed(micros());
@@ -729,8 +730,8 @@ void setup_wifi() {
   Serial.println(WiFi.localIP());
 }
 
-void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.print("Message arrived [");
+void callback(char* topic, byte* payload, unsigned int length) {  
+  Serial.print("Message arrived [");                                //menampilkan pesan yang diterima
   Serial.print(topic);
   Serial.print("] ");
   for (int i = 0; i < length; i++) {
@@ -754,8 +755,8 @@ void reconnect() {
 
     if (client.connect(clientId.c_str())) {
       Serial.println("connected");
-      client.publish("receiver", "Dah tersambung nih...");
-      client.subscribe("sender");
+      client.publish("nodered-elka", "Dah tersambung nih...");    //mengirim pesan "terkoneksi" dengan topik "nodered-elka"
+      client.subscribe("sender-elka");                            //subscribe ke topik "sender-elka"
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -780,27 +781,39 @@ void loop() {
     reconnect();
   }
   client.loop();
+
   unsigned long now = millis();
-  if (now - lastMsg > 500) {
+  if (now - lastMsg > 5000) {
     lastMsg = now;
-    filter.add(analogRead(POT));
-    unsigned long potValue = filter.get(); 
-    String strPot = String(potValue);
+    filter.add(analogRead(POT));                           //memberikan filter moving average ke data sensor
+    unsigned long potValue = filter.get();                 //mengambil data sensor yang sudah difilter
+    potValue = map(potValue,0,1024,0,255);                 //mapping nilai potValue dari rentang 0-1024 menjadi rentang 0-255 
+    String strPot = String(potValue);                      //merubah type data menjadi string
     Serial.println("Potensio Value: ");
     Serial.println(strPot.c_str());
-    client.publish("receiver", strPot.c_str());
+    client.publish("nodered-elka", strPot.c_str());        //mengirim data sensor ke topik "nodered-elka"
   }
 }
                       </code>
                     </pre>                    
                   </div>
                 </div>
-                <p></p> 
+                <p></p>
+                <p> Kode di atas merupakan program Arduino yang menghubungkan perangkat ESP8266 ke broker MQTT menggunakan library ESP8266WiFi dan PubSubClient. Program tersebut memungkinkan ESP8266 untuk mengambil data dari sebuah potensiometer yang terhubung ke pin A0, memfilter nilai potensiometer menggunakan moving average dengan 5 data, dan kemudian mengirimkan data hasil pengukuran ke broker MQTT melalui topik "nodered-elka".</p>
+
+                <p> Pada awal program, terdapat beberapa konstanta seperti SSID dan password WiFi yang digunakan untuk melakukan koneksi ke jaringan. Selain itu, konstanta mqtt_server menentukan alamat broker MQTT yang digunakan. Kemudian, terdapat pengaturan pinout dan inisialisasi koneksi WiFi dan koneksi MQTT di dalam fungsi setup().</p>
+
+                <p> Fungsi callback() berisi kode untuk menampilkan pesan yang diterima dari broker dan melakukan aksi berdasarkan isi pesan. Jika pesan yang diterima adalah "1", maka LED pada perangkat akan menyala, sedangkan jika pesan yang diterima adalah "0", maka LED akan mati.</p>
+
+                <p> Fungsi reconnect() akan berulang kali mencoba untuk melakukan koneksi ke broker MQTT hingga berhasil terhubung. Setelah berhasil terkoneksi, fungsi ini akan mengirimkan pesan ke broker dan melakukan subscribe ke topik tertentu.</p>
+
+                <p> Fungsi loop() akan dieksekusi secara terus-menerus selama perangkat berjalan. Fungsi ini memeriksa koneksi ke broker MQTT dan memanggil fungsi reconnect() jika belum terkoneksi. Kemudian, fungsi loop() akan memperbarui nilai dari potensiometer setiap 5 detik dan mengirimkan data hasil pengukuran ke broker MQTT melalui topik "nodered-elka". Nilai potensiometer akan difilter menggunakan moving average dengan 5 data sebelum dikirimkan ke broker.</p>
 
               </ul>
             </div>
           </div>          
         </div>
+        <p></p>
 
         <div class="row">
           <div data-aos="fade-left">
@@ -820,8 +833,8 @@ void loop() {
 GND-ESP8266 terhubung dengan GND-Relay
 D1-ESP8266 terhubung dengan IN-Relay
 
-C-Relay terhubung ke Power Supply (+)   #C = Common, NO = Normally Open, NC = Normally Closed
-Power Supply (-) terhubung ke Lampu
+C-Relay terhubung ke Power Supply   #C = Common, NO = Normally Open, NC = Normally Closed
+Power Supply terhubung ke Lampu
 NO-Relay terhubung ke Lampu
                       </code>
                     </pre>                    
@@ -842,19 +855,19 @@ NO-Relay terhubung ke Lampu
 
 const char* ssid = "labelka";
 const char* password = "labelka123";
-const char* mqtt_server = "test.mosquitto.org";
+const char* mqtt_server = "test.mosquitto.org";         //set broker mqtt pada mosquitto
 
 WiFiClient espClient;
 PubSubClient client(espClient);
 
 #define MSG_BUFFER_SIZE  (50)
-#define RELAY D1
+#define RELAY D1                                        //mendefinisikan pin D1 sebagai pin Relay
 
 unsigned long lastMsg = 0;
 char msg[MSG_BUFFER_SIZE];
 int value = 0;
 
-void setup_wifi() {
+void setup_wifi() {                                     //melakukan koneksi wifi
 
   delay(10);
   Serial.println();
@@ -878,7 +891,7 @@ void setup_wifi() {
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.print("Message arrived [");
+  Serial.print("Message arrived [");                                //menampilkan pesan yang diterima
   Serial.print(topic);
   Serial.print("] ");
   for (int i = 0; i < length; i++) {
@@ -886,12 +899,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
   Serial.println();
 
-  if ((char)payload[0] >= '1') {
-    digitalWrite(RELAY, HIGH);  
-    client.publish("sender", "Relay Closed");
+  if ((char)payload[0] = '1') {                                    
+    digitalWrite(RELAY, HIGH);                                      //apabila pesan yang diterima adalah 1, maka pin Relay ON
   } else {
-    digitalWrite(RELAY, LOW);  
-    client.publish("sender", "Relay Open");
+    digitalWrite(RELAY, LOW);                                       //apabila pesan yang diterima selain 1, maka pin Relay OFF
   }
 }
 
@@ -903,8 +914,8 @@ void reconnect() {
 
     if (client.connect(clientId.c_str())) {
       Serial.println("connected");
-      client.publish("sender", "Dah tersambung nih...");
-      client.subscribe("receiver");
+      client.publish("nodered-elka", "Dah tersambung nih...");     //mengirim pesan terhubung ke topik "nodered-elka"
+      client.subscribe("receiver-elka");                           //subscribe ke topik "receiver-elka"
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -940,7 +951,174 @@ void loop() {
                     </pre>                    
                   </div>
                 </div>
-                <p></p> 
+                <p></p>
+                <p> Kode Arduino tersebut merupakan program untuk mengontrol sebuah Relay melalui koneksi WiFi dan protokol MQTT. Program tersebut menggunakan library ESP8266WiFi dan PubSubClient untuk koneksi WiFi dan MQTT.</p>
+
+                <p> Koneksi WiFi dilakukan pada fungsi setup_wifi() dan dilakukan pengulangan sampai koneksi berhasil terhubung. Setelah koneksi berhasil, IP address akan ditampilkan pada Serial Monitor.</p>
+
+                <p> Program tersebut menggunakan pin D1 sebagai pin untuk mengontrol Relay. Saat pesan yang diterima melalui MQTT adalah '1', maka pin Relay akan diaktifkan (HIGH) dan apabila pesan yang diterima adalah selain '1', maka pin Relay akan dinonaktifkan (LOW).</p>
+
+                <p> Pada fungsi reconnect(), program akan terus mencoba melakukan koneksi ke broker MQTT sampai koneksi berhasil terhubung. Setelah terhubung, program akan mengirim pesan "Dah tersambung nih..." ke topik "nodered-elka" dan subscribe ke topik "receiver-elka".</p>
+
+                <p> Program akan terus berjalan pada loop() dan melakukan client.loop() untuk mendapatkan pesan yang diterima melalui MQTT. Jika koneksi terputus, program akan melakukan koneksi ulang pada fungsi reconnect().</p>
+
+              </ul>
+            </div>
+          </div>          
+        </div>
+        <p></p>
+
+        <div class="row">
+          <div data-aos="fade-left">
+            <h3><i class="bi bi-chevron-right"></i> Setting user dan database InfluxDB</h3>
+            <p>Pada sistem rangkaian ini, data yang dikirim sensor akan disimpan oleh InfluxDB. Oleh karena itu perlu dibuat database pada InfluxDB.</p>
+            <div>
+              <ul>
+                <li><p> Pada latihan ini, dibuat user "labelka" dengan password "labelka123".</p></li>
+
+                <div class="code-padding-2">
+                  <div class="code-body">
+                    <div class="code-lang">Create user</div>
+                    <button class="code-copy" onclick="copyToClipboard(this)"> <i class="bx bx-copy code-copy"></i>Salin</button>
+                    <pre>
+                      <code class="language-sql">
+CREATE USER labelka WITH PASSWORD 'labelka' WITH ALL PRIVILEGES
+                      </code>
+                    </pre>                    
+                  </div>
+                </div>
+                <p></p>
+
+                <li><p> Kemudian dibuat database dengan nama "PID".</p></li>
+
+                <div class="code-padding-2">
+                  <div class="code-body">
+                    <div class="code-lang">Create database</div>
+                    <button class="code-copy" onclick="copyToClipboard(this)"> <i class="bx bx-copy code-copy"></i>Salin</button>
+                    <pre>
+                      <code class="language-sql">
+CREATE DATABASE PID
+                      </code>
+                    </pre>                    
+                  </div>
+                </div>
+                <p></p>
+
+                <li><p> User dan Database yang telah dibuat akan digunakan untuk konfigurasi InfluxDB di Node-RED.</p></li>
+
+              </ul>
+            </div>
+          </div>          
+        </div>
+        <p></p>
+
+        <div class="row">
+          <div data-aos="fade-left">
+            <h3><i class="bi bi-chevron-right"></i> Setting Node-RED</h3>
+            <p> Setelah ESP-8266, Sensor, dan InfluxDB tersetting dengan benar, langkah selanjutnya adalah membuat server dan dashboard dengan menggunakan Node-RED.</p>
+            <div>
+              <ul>
+                <li><p> Pada latihan ini, library (palette) tambahan yang diinstall adalah sebagai berikut.</p></li>
+
+                <div class="code-padding-2">
+                  <div class="code-body">
+                    <div class="code-lang">List palette</div>
+                    <button class="code-copy" onclick="copyToClipboard(this)"> <i class="bx bx-copy code-copy"></i>Salin</button>
+                    <pre>
+                      <code class="language-sql">
+1. node-red-contrib-influxdb          #untuk akses influxdb
+2. dashboard-evi                      #untuk ui dashboard
+                      </code>
+                    </pre>                    
+                  </div>
+                </div>
+                <p></p>
+
+                <li><p> Berikut adalah gambar flow/node lengkap dari latihan ini. Sebagai catatan, node "Debug" hanya berfungsi untuk menampilkan output dari node yang dihubungkannya sebagai acuan atau informasi apabila ada error atau hal lain (Debuging).</p></li>
+                <img src="assets/img/raspi/10.jpg" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+
+                <li><p> Berikut adalah konfigurasi dari node "mqtt-in" dengan label "nodered-elka". Berfungsi untuk menerima pesan dari ESP-8266 sender dan meneruskannya ke function "ON-OFF".</p></li>
+                <img src="assets/img/raspi/11.jpg" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+                <img src="assets/img/raspi/12.jpg" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+
+                <li><p> Kode pada node "function" dengan label "ON-OFF". Berfungsi untuk merubah variabel data, apabila nilai data < set point maka data akan bernilai '1' dan apabila sebaliknya maka data akan bernilai '0'.</p></li>
+
+                <div class="code-padding-2">
+                  <div class="code-body">
+                    <div class="code-lang">Function ON-OFF</div>
+                    <button class="code-copy" onclick="copyToClipboard(this)"> <i class="bx bx-copy code-copy"></i>Salin</button>
+                    <pre>
+                      <code class="language-javascript">
+let data = msg.payload;
+var res = flow.get("setPoint");
+if (data < res) {
+    data = 1;
+} else {
+    data = 0;
+}
+msg.payload = data;
+return msg;
+                      </code>
+                    </pre>                    
+                  </div>
+                </div>
+                <p></p>
+
+                <li><p> Berikut adalah konfigurasi dari node "mqtt-out" dengan label "receiver-elka". Berfungsi untuk meneruskan pesan dari node "function" ke ESP-8266 Receiver untuk ON atau OFF Relay.</p></li>
+                <img src="assets/img/raspi/13.jpg" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+
+                <li><p> Kode pada node "function" dengan label "ParsingData". Berfungsi untuk memparsing data, sehingga dapat terkirim sebagai value "resistansi" ke database InfluxDB.</p></li>
+
+                <div class="code-padding-2">
+                  <div class="code-body">
+                    <div class="code-lang">Function ParsingData</div>
+                    <button class="code-copy" onclick="copyToClipboard(this)"> <i class="bx bx-copy code-copy"></i>Salin</button>
+                    <pre>
+                      <code class="language-javascript">
+var data = {
+    "resistansi": msg.payload
+};
+msg.payload = data;
+return msg;
+                      </code>
+                    </pre>                    
+                  </div>
+                </div>
+                <p></p>
+
+                <li><p> Berikut adalah konfigurasi dari node "influxdb-out" dengan label "InfluxDB". Berfungsi untuk menyimpan data resistansi dengan nama tabel "potensiometer" nama database "PID" dan akun user "labelka" InfluxDB yang telah dibuat tadi serta IP Raspberry 192.168.8.18.</p></li>
+                <img src="assets/img/raspi/14.jpg" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+                <img src="assets/img/raspi/15.jpg" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+
+                <li><p> Berikut adalah konfigurasi dari node "gauge" dengan label "Resistansi". Berfungsi untuk menampilkan data resistansi dalam bentuk gauge ke ui dashboard.</p></li>
+                <img src="assets/img/raspi/16.png" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+                <img src="assets/img/raspi/17.jpg" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+
+                <li><p> Berikut adalah konfigurasi dari node "slider" dengan label "Slider". Berfungsi untuk mengatur nilai set point.</p></li>
+                <img src="assets/img/raspi/18.png" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+
+                <li><p> Berikut adalah konfigurasi dari node "text" dengan label "Set Point". Berfungsi untuk menampilkan nilai set point pada ui dashboard.</p></li>
+                <img src="assets/img/raspi/19.png" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
+
+                <li><p> Kode pada node "function" dengan label "Set Point". Berfungsi untuk mengambil nilai set point dari slider dan menahan nilainya pada perintah "flow.set()" sehingga dapat diambil oleh node "function" dengan label "ON-OFF" dengan perintah "flow.get()".</p></li>
+
+                <div class="code-padding-2">
+                  <div class="code-body">
+                    <div class="code-lang">Function ParsingData</div>
+                    <button class="code-copy" onclick="copyToClipboard(this)"> <i class="bx bx-copy code-copy"></i>Salin</button>
+                    <pre>
+                      <code class="language-javascript">
+var setPoint = msg.payload;
+flow.set("setPoint", setPoint);
+return msg;
+                      </code>
+                    </pre>                    
+                  </div>
+                </div>
+                <p></p>
+
+                <li><p> Setelah semua konfigurasi selesai, dan dideploy, maka kamu dapat akses dashboardnya di browser dengan link, http:192.168.8.18:1880/ui. Ganti IP-nya dengan IP Raspberry kamu ya. Berikut contoh tampilan dashboardnya.</p></li>
+                <img src="assets/img/raspi/20.jpg" style="width: 60%; height: auto; padding-bottom: 1em; padding-top: 1em;" class="img-fluid" alt="">
 
               </ul>
             </div>
@@ -956,11 +1134,13 @@ void loop() {
 
         <div class="section-title">
           <h2>Penjelasan UTS</h2>
-          <p>Inti dari UTS adalah membuat sebuah Sistem kontrol PID, untuk mengatur pemanas (dalam kasus ini adalah pemanas air) sehingga ketika sensor membaca suhu tertentu maka pemanas akan mati dan ketika pada suhu yang lain pemanas menyala. Tentunya dengan beberapa poin berikut.</p>
+          <p>Inti dari UTS adalah membuat sebuah Sistem kontrol PID, untuk mengatur pemanas (dalam kasus ini adalah pemanas air atau boleh kasus lain selain pemanas asalkan bisa dikendalikan dengan PID. Tapi, saran pemanas air aja yang lebih gampang wkwk) sehingga ketika sensor membaca suhu tertentu maka sistem akan mengatur pemanas (ketika suhu melebihi set point, maka sistem akan mematikan pemanas dan ketika suhu kurang dari set point, maka sistem akan menyalakan pemanas) sehingga sistem dapat mempertahankan keadaan suhunya stabil (ini yang diharapkan). Dan seminimal-minimalnya adalah Kontrol ON-OFF, yaitu pada rentang suhu tertentu maka pemanas akan mati dan pada rentang suhu lainnya pemanas akan menyala. Contoh sederhana dari Kontrol PID adalah sistem AC (Air Conditioner), yaitu ketika kita mengatur nilai suhu dengan remote AC menjadi 21&deg;C maka sistem AC akan berusaha membuat suhu ruangan menjadi 21&deg;C sehingga suhu ruangan menjadi stabil di kisaran 21&deg;C. Nilai 21&deg;C merupakan Set Point dari Kontrol PID tersebut, artinya kita dapat mengatur Set Point sesuai dengan apa yang kita inginkan, dan sistem PID akan berusaha untuk menuju nilai Set Point tersebut. Tentunya dengan beberapa poin berikut.</p>
           <ul>
+            <p></p>
             <li><p> Set point kontrol PID terjadi di cloud.</p></li>
             <li><p> Ada dua mikrokontroller, satu mengirim data sensor, yang satunya lagi menerima data sensor.</p></li>
-            <li><p> Dilakukan eksperimen untuk kalibrasi sensor.</p></li> 
+            <li><p> Dilakukan eksperimen untuk kalibrasi (karakteristik) sensor.</p></li> 
+            <li><p> Digunakan filter Moving Average untuk data dari sensor. Ingat juga data sensor disimpan di database InfluxDB.</p></li>
           </ul>
         </div>
 
