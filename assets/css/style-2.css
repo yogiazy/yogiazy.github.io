@@ -336,7 +336,7 @@ h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("https://cdn.dribbble.com/users/410907/screenshots/2044702/wasting_time.gif") top center;
+  background: url("https://cdn.dribbble.com/users/410907/screenshots/2044702/wasting_time.gif") top right;
   background-size: cover;
 }
 
@@ -388,7 +388,6 @@ h6 {
 
 @media (min-width: 1024px) {
   #hero {
-    background: url("https://cdn.dribbble.com/users/410907/screenshots/2044702/wasting_time.gif") top right;
     background-attachment: fixed;
     background-size: contain;
   }
