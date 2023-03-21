@@ -955,7 +955,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
   Serial.println();
 
-  if ((char)payload[0] = '1') {                                    
+  if ((char)payload[0] == '1') {                                    
     digitalWrite(RELAY, HIGH);                                      //apabila pesan yang diterima adalah 1, maka pin Relay ON
   } else {
     digitalWrite(RELAY, LOW);                                       //apabila pesan yang diterima selain 1, maka pin Relay OFF
